@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 for(const width of [390,1440])test(`Fluxo comercial e layout em ${width}px`,async({page})=>{
  await page.setViewportSize({width,height:900});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');
- await expect(page.getByRole('heading',{level:1})).toContainText('complicada');
+ await expect(page.getByRole('heading',{level:1})).toContainText('Chega de repetir refeições');
  await page.locator('[data-choice="assist"]').click();await expect(page.locator('#recommendation')).toContainText('DF Assist');
  await page.locator('#recommendation a').click();await expect(page).toHaveURL(/#oferta-assist$/);
  await page.locator('[data-choice="receitas"]').click();await expect(page.locator('#recommendation')).toContainText('Filtro de Receitas');

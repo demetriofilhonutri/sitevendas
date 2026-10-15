@@ -34,3 +34,13 @@ h3,.assist-panel h3{font-size:24px}
 .portrait>span{color:#91B39D}
 .mobile-bar .button{min-height:48px}
 @media(max-width:700px){h1,h2,.product-copy h2,.final-cta h2{font-size:28px}.doubt h2{font-size:26px}.hero-copy .eyebrow{font-size:10px}.hero-copy .actions{gap:16px}.signature small,.mock-note,.recipes-panel>small{font-size:12px}.mock-note{line-height:1.4}.phone{min-height:440px}.hero-visual{min-height:560px}.floating-label{font-size:11px}.phone h3{font-size:18px}.phone p{font-size:12px}.phone .mock-note{font-size:10px}.button.small{font-size:12px}.recipe-logo span{font-size:9px}}
+/* Narrativa comercial: hierarquia, comparação e destaque do combo. */
+.hero h1{font-size:clamp(32px,3.3vw,48px);line-height:1.18;max-width:650px}
+.hero .lead{font-size:18px;max-width:580px}.hero-copy>p:not(.eyebrow){max-width:580px}
+.hero-reasons{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:24px;font-size:12px;color:var(--primary)}
+.hero .signature{margin-top:20px}.hero .button{font-size:14px}
+.decision-section{padding-bottom:32px}.decision-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.decision-grid article{padding:32px;border:1px solid var(--border);border-radius:24px;background:var(--card)}.decision-grid .decision-solution{background:var(--primary-soft);border-color:#b2d4bf}.decision-grid h3{font-size:24px}.decision-grid p{font-size:15px}.decision-note{text-align:center;font-size:12px;margin-top:24px}
+.combo-value{display:grid;grid-template-columns:1fr 1.1fr auto;gap:24px;align-items:center;background:var(--primary-soft);border:1px solid #b2d4bf;border-radius:24px;padding:28px;margin-bottom:40px}.combo-value .eyebrow{margin:0 0 12px}.combo-value h3{font-size:22px;margin:0}.combo-value p{margin:0;font-size:14px}.combo-value strong{color:var(--primary)}
+.offers{grid-template-columns:1.18fr 1fr 1fr}.offer.featured{grid-column:1;grid-row:1;border:2px solid var(--primary);box-shadow:0 12px 36px #155b3a20}.offer.featured h3{font-size:28px}.offer .price{margin-top:24px}.offer .checks{margin-top:12px}.offer-badge{font-size:9px;max-width:calc(100% - 32px)}
+@media(max-width:1000px){.combo-value{grid-template-columns:1fr 1fr}.combo-value .button{grid-column:1/-1;justify-self:start}.hero .button{font-size:13px}}
+@media(max-width:700px){.hero h1{font-size:34px}.hero .lead{font-size:16px}.hero-reasons{font-size:12px}.decision-grid{grid-template-columns:1fr}.decision-grid article{padding:24px}.combo-value{grid-template-columns:1fr;padding:24px;gap:20px}.combo-value .button{grid-column:auto;width:100%}.offers{grid-template-columns:1fr}.offer.featured{grid-column:auto}.offer-badge{font-size:8px}.hero .actions .button{width:100%;font-size:13px}.decision-section{padding-bottom:0}}
