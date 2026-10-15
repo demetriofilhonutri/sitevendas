@@ -1,0 +1,26 @@
+{
+  "source": "Gravações enviadas pelo proprietário do produto nesta conversa",
+  "originals": [
+    "dfassist.mp4",
+    "dfassistoutrosrecursos.mp4"
+  ],
+  "processing": "Recorte de margens vazias, trechos contínuos, áudio removido, H.264 com faststart; nenhuma tela, resultado ou ressalva foi alterado.",
+  "substituicoes": {
+    "startSeconds": 4,
+    "durationSeconds": 45,
+    "screenshots": [
+      3,
+      44
+    ]
+  },
+  "outrosRecursos": {
+    "startSeconds": 5,
+    "durationSeconds": 49.8,
+    "screenshots": [
+      13,
+      20,
+      50
+    ]
+  },
+  "limitations": "A importação e geração da lista de compras não foram executadas no vídeo. Somente a conversão de peso cru/cozido foi demonstrada; as outras calculadoras aparecem no menu."
+}

@@ -21,7 +21,7 @@ for(const width of [390,1440])test(`Fluxo comercial e layout em ${width}px`,asyn
 
 test('Demonstração real carrega e reproduz sem erro',async({page})=>{
  await page.goto('/');
- const video=page.locator('.demo-video video');
+ const video=page.locator('#demonstracao-receitas .demo-video video');
  await video.evaluate(v=>{v.muted=true;v.load();});
  await expect.poll(()=>video.evaluate(v=>v.readyState)).toBeGreaterThanOrEqual(2);
  expect(await video.evaluate(v=>v.videoWidth)).toBe(1160);
@@ -32,4 +32,17 @@ test('Demonstração real carrega e reproduz sem erro',async({page})=>{
  await expect(page.locator('#demo-transcript')).toContainText('O vídeo não demonstra a exportação de PDF');
  const image=page.locator('.recipes-panel .real-capture');await image.scrollIntoViewIfNeeded();await image.evaluate(i=>i.decode());
  expect(await image.evaluate(i=>i.naturalWidth)).toBe(1160);
+});
+
+for (const [file,width] of [['substituicoes.mp4',530],['compras-calculadoras.mp4',920]]) test(`Vídeo real DF Assist: ${file}`,async({page})=>{
+ await page.goto('/');
+ const video=page.locator(`#demonstracao-dfassist video:has(source[src$="${file}"])`);
+ await video.evaluate(v=>{v.muted=true;v.load();});
+ await expect.poll(()=>video.evaluate(v=>v.readyState)).toBeGreaterThanOrEqual(2);
+ expect(await video.evaluate(v=>v.videoWidth)).toBe(width);
+ await video.evaluate(v=>v.play());
+ await expect.poll(()=>video.evaluate(v=>v.currentTime)).toBeGreaterThan(.5);
+ await video.evaluate(v=>v.pause());
+ await expect(page.locator('#assist-video-description')).toContainText('Substituição com ressalvas');
+ await expect(page.locator('#assist-other-description')).toContainText('A gravação não mostra a importação');
 });
