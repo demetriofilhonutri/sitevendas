@@ -28,3 +28,7 @@ A prévia não está pronta para vendas públicas enquanto essas pendências per
 ## Prévia pelo GitHub Pages
 
 Workflow `.github/workflows/preview-pages.yml`: compila a branch `main` e publica apenas o build estático, sem domínio personalizado. No GitHub, selecione **Settings → Pages → Build and deployment → Source: GitHub Actions**. Depois execute **Actions → Publicar prévia no GitHub Pages → Run workflow** caso o envio inicial tenha ocorrido antes dessa seleção. A URL é fornecida pelo job de deploy; o endereço esperado é `https://demetriofilhonutri.github.io/sitevendas/`. Só considerar online após o workflow concluir. A prévia conserva `noindex`; não é uma oferta com pagamentos habilitados.
+
+## Capturas e vídeo do Filtro de Receitas
+
+`public/media/proveniencia.json` registra a origem e o fluxo. As imagens e o vídeo de 13,5 segundos mostram a execução local intacta do commit público informado. Não são capturas do site online: os dois domínios estavam bloqueados na sessão. Recursos externos (fontes, logotipo e bibliotecas PDF) não foram carregados; nenhum recurso foi substituído por dados simulados. O vídeo mostra busca, filtros e detalhes, sem áudio e sem exportação PDF. Há descrição textual acessível junto ao player. `scripts/capture-recipes.mjs` reproduz a captura com RECIPES_SOURCE apontando para um checkout temporário fora deste repositório. A codificação utiliza ffmpeg, H.264, yuv420p e faststart.

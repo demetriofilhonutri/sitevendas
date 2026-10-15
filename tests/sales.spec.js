@@ -18,3 +18,18 @@ for(const width of [390,1440])test(`Fluxo comercial e layout em ${width}px`,asyn
  const broken=await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>h.length>1&&!document.getElementById(h.slice(1))));expect(broken).toEqual([]);expect(errors).toEqual([]);
  await page.goto('/');await page.screenshot({path:`/tmp/df-${width}.png`,fullPage:true});
 });
+
+test('Demonstração real carrega e reproduz sem erro',async({page})=>{
+ await page.goto('/');
+ const video=page.locator('.demo-video video');
+ await video.evaluate(v=>{v.muted=true;v.load();});
+ await expect.poll(()=>video.evaluate(v=>v.readyState)).toBeGreaterThanOrEqual(2);
+ expect(await video.evaluate(v=>v.videoWidth)).toBe(1160);
+ expect(await video.evaluate(v=>v.duration)).toBeGreaterThan(10);
+ await video.evaluate(v=>v.play());
+ await expect.poll(()=>video.evaluate(v=>v.currentTime)).toBeGreaterThan(0.5);
+ await video.evaluate(v=>v.pause());
+ await expect(page.locator('#demo-transcript')).toContainText('O vídeo não demonstra a exportação de PDF');
+ const image=page.locator('.recipes-panel .real-capture');await image.scrollIntoViewIfNeeded();await image.evaluate(i=>i.decode());
+ expect(await image.evaluate(i=>i.naturalWidth)).toBe(1160);
+});

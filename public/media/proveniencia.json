@@ -1,0 +1,10 @@
+{
+  "product": "Filtro de Receitas",
+  "officialUrl": "https://demetriofilhonutri.github.io/receitasnutri/",
+  "repository": "https://github.com/demetriofilhonutri/receitasnutri",
+  "commit": "940b557488bd69936224b3877516547ac389eab6",
+  "capture": "Navegação real em cópia local intacta do código público; acesso ao site oficial bloqueado pela rede. Recursos externos indisponíveis: fontes, logotipo e bibliotecas de PDF. O vídeo não demonstra exportação PDF.",
+  "flow": "Busca Crepioca, máximo 300 kcal, proteína mínima 17g, desmarcar doces, abrir detalhes.",
+  "frames": 54,
+  "fps": 4
+}
