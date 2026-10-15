@@ -1,0 +1,16 @@
+import {test,expect} from '@playwright/test';
+for(const width of [390,1440])test(`Fluxo comercial e layout em ${width}px`,async({page})=>{
+ await page.setViewportSize({width,height:900});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');
+ await expect(page.getByRole('heading',{level:1})).toContainText('complicada');
+ await page.locator('[data-choice="assist"]').click();await expect(page.locator('#recommendation')).toContainText('DF Assist');
+ await page.locator('#recommendation a').click();await expect(page).toHaveURL(/#oferta-assist$/);
+ await page.locator('[data-choice="receitas"]').click();await expect(page.locator('#recommendation')).toContainText('Filtro de Receitas');
+ await page.locator('[data-choice="combo"]').click();await expect(page.locator('#recommendation')).toContainText('Combo DF');
+ await page.getByText('Essas ferramentas substituem um nutricionista?',{exact:true}).click();await expect(page.locator('details[open]')).toContainText('Não substituem');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBeTruthy();
+ expect(await page.locator('[data-checkout="true"]').count()).toBe(0);
+ expect(await page.evaluate(()=>window.dataLayer.some(e=>e.event==='begin_checkout'))).toBe(false);
+ expect(await page.evaluate(()=>window.dataLayer.some(e=>e.event==='cta_click'))).toBe(true);
+ const broken=await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].map(a=>a.getAttribute('href')).filter(h=>h.length>1&&!document.getElementById(h.slice(1))));expect(broken).toEqual([]);expect(errors).toEqual([]);
+ await page.goto('/');await page.screenshot({path:`/tmp/df-${width}.png`,fullPage:true});
+});
